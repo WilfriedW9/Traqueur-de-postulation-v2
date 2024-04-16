@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traqueur de postulation</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" type="module" defer></script>
+  </head>
+  <body>
+    <button id="toggleForm">+</button>
+    <form class="hidden">
+      <div class="form-container">
+        <div class="text-input-compartment">
+          <label for="nomEntreprise"> Nom de l'entreprise:</label>
+          <input
+            type="text"
+            name="nomEntreprise"
+            id="nomEntreprise"
+            autocomplete="off"
+          />
+          <label for="technologies"> Stack:</label>
+          <input
+            type="text"
+            name="technologies"
+            id="technologies"
+            placeholder="JS, C++, SQL, PHP..."
+            autocomplete="off"
+          />
+          <label for="siteInternet"> Site Internet:</label>
+          <input
+            type="text"
+            name="siteInternet"
+            id="siteInternet"
+            autocomplete="off"
+          />
+        </div>
+        <div class="other-input-compartment">
+          <label for="date"> Date de la postulation:</label>
+          <input type="date" name="date" id="date" />
+          <label for="titrePoste"> Poste:</label>
+          <input
+            type="text"
+            name="titrePoste"
+            id="titrePoste"
+            placeholder="Front/Back/FS/Autre"
+            autocomplete="off"
+          />
+          <label for="interet"> Intérêt:</label>
+          <input
+            type="number"
+            name="interet"
+            id="interet"
+            placeholder="1~10"
+            min="1"
+            max="10"
+          />
+        </div>
+      </div>
+      <label for="posteDesc"> Description du poste:</label>
+      <textarea
+        name="posteDesc"
+        id="posteDesc"
+        cols="30"
+        rows="5"
+        placeholder="Bla bla bla..."
+      ></textarea>
+      <button type="submit" id="formSubmit" name="formSubmit">
+        Ajout candidature
+      </button>
+    </form>
+    <div class="header">
+      <h2>Nombre de candidatures : <span id="candidatureCount"></span></h2>
+    </div>
+    <!-- Grille à 7 colonnes  -->
+    <div class="filtre">
+      <label for="trier">Filtrer:</label>
+      <select name="trier" id="trier">
+        <option value="interet">A-Z</option>
+        <option value="interet">Date</option>
+        <option value="interet">Poste</option>
+        <option value="interet">Intérêt</option>
+      </select>
+    </div>
+    <div class="board">
+      <div class="row">
+            <div>Nom Entreprise</div>
+            <div>Stack</div>
+            <div>Site Internet</div>
+            <div>Date</div>
+            <div>Poste</div>
+            <div>Intérêt</div>
+            <div>Description poste</div>
+      </div>
+    </div>
+  </body>
+</html>
