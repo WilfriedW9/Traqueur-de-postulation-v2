@@ -7,22 +7,23 @@ const form = document.querySelector("form");
 // Model candidature
 class Candidature {
   constructor(
-    nomEntreprise,
-    stack,
-    website,
+    candidatureID,
     date_postulation,
-    poste,
     interet,
+    nomEntreprise,
+    poste,
     posteDesc,
     reponse,
-    candidatureID
+    stack,
+    website,
   ) {
-    this.nomEntreprise = nomEntreprise;
+    this.candidatureID = candidatureID
     this.date_postulation = date_postulation;
-    this.reponse = false;
     this.interet = interet;
+    this.nomEntreprise = nomEntreprise;
     this.poste = poste;
     this.posteDesc = posteDesc;
+    this.reponse = false;
     this.stack = stack;
     this.website = website;
   }
@@ -99,8 +100,12 @@ fetch(URL_CANDIDATURES)
   .then((data) => {
     
     data.forEach((entry) => {
+      const values = Object.values(entry)
+      const candidature = new Candidature(...values)
+      console.log(candidature)
       database.push(entry)
       ajouterCandidature()
     })
   })
 
+  console.log(database)
