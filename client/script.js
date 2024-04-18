@@ -8,9 +8,9 @@ const form = document.querySelector("form");
 class Candidature {
   constructor(
     nomEntreprise,
-    technologies,
-    siteInternet,
-    date,
+    stack,
+    website,
+    date_postulation,
     poste,
     interet,
     posteDesc,
@@ -18,13 +18,13 @@ class Candidature {
     candidatureID
   ) {
     this.nomEntreprise = nomEntreprise;
-    this.date = date;
+    this.date_postulation = date_postulation;
     this.reponse = false;
     this.interet = interet;
     this.poste = poste;
     this.posteDesc = posteDesc;
-    this.technologies = technologies;
-    this.siteInternet = siteInternet;
+    this.stack = stack;
+    this.website = website;
   }
 }
 
@@ -68,9 +68,9 @@ function ajouterCandidature() {
   newElement.className = "row"
   newElement.insertAdjacentHTML("beforeend", `
   <div>${derniereCandidature.nomEntreprise}</div>
-  <div>${derniereCandidature.technologies}</div>
-  <div>${derniereCandidature.siteInternet}</div>
-  <div>${derniereCandidature.date}</div>
+  <div>${derniereCandidature.stack}</div>
+  <div>${derniereCandidature.website}</div>
+  <div>${derniereCandidature.date_postulation.split("").slice(0, 10).join("")}</div>
   <div>${derniereCandidature.poste}</div>
   <div>${derniereCandidature.interet}</div>
   <div>${derniereCandidature.posteDesc}</div>
@@ -91,3 +91,16 @@ board.addEventListener("click", (e)=> {
     candidatureCount.innerText = database.length
   }
 })
+
+const URL_CANDIDATURES = "http://localhost:5001/candidatures"
+
+fetch(URL_CANDIDATURES)
+  .then(response => response.json())
+  .then((data) => {
+    
+    data.forEach((entry) => {
+      database.push(entry)
+      ajouterCandidature()
+    })
+  })
+
